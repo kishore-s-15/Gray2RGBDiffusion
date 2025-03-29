@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gray2rgb_diffusion"
+version = "0.1.0"
+description = "This library will help with coloring grayscale images into RGB images using diffusion"
+readme = "README.md"
+authors = [
+    {name = "Kishore Sampath", email = "skishore2602.dev@gmail.com"}
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "torch>=1.9.0",
+    "torchvision>=0.10.0",
+    "diffusers>=0.10.2",
+    "numpy>=1.21.0",
+    "Pillow>=8.3.0",
+    "tqdm>=4.62.0",
+    "matplotlib>=3.4.0"
+
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "mypy>=1.0.0",
+]
