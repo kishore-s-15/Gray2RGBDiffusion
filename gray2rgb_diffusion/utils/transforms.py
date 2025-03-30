@@ -6,6 +6,7 @@ def get_transforms():
         transforms.ToTensor(),
         transforms.Lambda(lambda x: (x * 2) - 1),
     ])
+
     reverse_transform = transforms.Compose([
         transforms.Lambda(lambda x: x.clamp(-1, 1)),
         transforms.Lambda(lambda x: (x + 1) / 2),
@@ -13,4 +14,5 @@ def get_transforms():
         transforms.Lambda(lambda x: x.permute(1, 2, 0)),
         transforms.Lambda(lambda x: x.byte()),
     ])
+    
     return transform, reverse_transform

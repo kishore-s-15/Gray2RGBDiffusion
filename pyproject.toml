@@ -33,3 +33,6 @@ dev = [
     "black>=23.0.0",
     "mypy>=1.0.0",
 ]
+
+[tool.setuptools]
+packages = ["gray2rgb_diffusion"]

@@ -1,3 +1,4 @@
+import numpy as np
 import matplotlib.pyplot as plt
 from diffusers import DDPMScheduler
 from torch.utils.data import DataLoader, Subset
@@ -14,18 +15,28 @@ transform, reverse_transform = get_transforms()
 
 # Load test dataset
 test_dataset = CIFAR10GrayToColor(root="./data", train=False, transform=transform)
-test_subset = Subset(test_dataset, range(config["test_subset_size"]))
-test_loader = DataLoader(test_subset, batch_size=config["batch_size"], shuffle=True)
+
+if config["do_subset_test"]:
+    print("Here")
+    test_dataset = Subset(test_dataset, range(config["test_subset_size"]))
+
+test_loader = DataLoader(test_dataset, batch_size=config["batch_size"], shuffle=True)
 
 # Initialize model and scheduler
 model = get_model(config)
 scheduler = DDPMScheduler(num_train_timesteps=config["num_train_timesteps"], beta_schedule="linear")
 
 # Load pre-trained model
-model = load_model(model, "../saved_models/colorization_epoch.pth", config["device"])
+model = load_model(model, f"{config['save_dir']}/colorization_epoch.pth", config["device"])
 
 # Perform inference
 samples, gray_images, original_images = infer(model, test_loader, scheduler, config)
+
+print("Samples:")
+print(f"Min: {np.min(samples)}, Max: {np.max(samples)}")
+
+print("Original Images:")
+print(f"Min: {np.min(original_images)}, Max: {np.max(original_images)}")
 
 # Visualize results
 def plot_results(samples, gray_images, original_images, reverse_transform):
