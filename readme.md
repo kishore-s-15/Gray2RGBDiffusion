@@ -50,7 +50,7 @@ To train the model, use the training script:
 python scripts/train_script.py
 ```
 
-### Training Configuration
+### ⚙️ Training Configuration
 
 The training parameters (batch size, learning rate, etc.) are defined in `configs/config.py`. You can modify them as
 needed.
@@ -65,13 +65,7 @@ To perform inference and visualize results:
 python scripts/inference_script.py
 ```
 
-### Outputs
-
-The script generates and displays:
-
-- Grayscale input images
-- Predicted colorized images
-- Original ground-truth color images
+### 🧹 Outputs
 
 ![Colorization.png](gray2rgb_diffusion/imgs/colorization.png)
 
@@ -81,6 +75,11 @@ The script generates and displays:
 
 Due to training on smaller images (32x32), the results are limited compared to the full implementation in the original
 paper. However, this implementation demonstrates the potential of diffusion-based models for image colorization.
+
+| Metrics                     | Scores |
+|-----------------------------|--------|
+| Fréchet Inception Distance  | 10.6   |
+| Inception Score            | 198.3  |
 
 ---
 
