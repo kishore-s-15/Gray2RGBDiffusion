@@ -47,7 +47,7 @@ The CIFAR-10 dataset is used for training and evaluation. Images are resized to 
 
 To train the model, use the training script:
 ```bash
-python scripts/train_script.py
+python gray2rgb_diffusion/scripts/train_script.py
 ```
 
 ### ⚙️ Training Configuration
@@ -62,7 +62,7 @@ needed.
 To perform inference and visualize results:
 
 ```bash
-python scripts/inference_script.py
+python gray2rgb_diffusion/scripts/inference_script.py
 ```
 
 ### 🧹 Outputs
